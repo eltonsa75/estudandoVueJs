@@ -5,22 +5,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <title>Trabalhando co VueJs</title>
+    <title>Trabalhando com VueJs</title>
 
     <style>
         .verde {
-            color: green;
+            background-color: green;
         }
+        .branco {
+            background-color: white;
+        }
+        .azul {
+            background-color: blue;
+        }
+        .vermelho {
+            background-color: red;
+        }
+
+        .borda{
+            border: 1px solid black;
+        }
+
+        .div-principal{
+            width: 200px;
+            height: 200px;
+        }
+        
+        .div-comum{
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+        }
+
     </style>
 </head>
 <body>
 
     <div id="app">
-      <a v-bind:href="site">Site</a>
-      <p v-bind:class="cor">Entendendo a diretiva v-bind</p>
-      <input type="text" placeholder="instrucao" v-bind:value="valor">
-      <input type="checkbox" v-bind:checked="check">
-         
+    <div class="borda div-principal" :class="cor">
+        Cor: {{ cor }}
+        <br>
+        Posição X do Mouse: {{ posicaoX }}
+        <br>
+        Posição Y do Mouse: {{ posicaoY }}
+
+    </div>
+    <hr>
+    <div @click="mudarCor('verde')" class="borda div-comum"></div>
+    <div 
+        class="borda div-comum" 
+        @mouseover="mudarCor('azul')"
+        @mouseout="mudarCor('vermelho')">
+    </div>
+    <div class="borda div-comum" @mousemove="coordenadas($event)"></div>
     </div>
 
     <script>    
@@ -28,27 +64,20 @@
         const vm = new Vue({
             el: '#app',
             data: {
-              site: 'http://jorgesantana.net.br',
-              cor: 'verde',
-              intrucao: 'Placeholder - diretiva v-bind',
-              valor: 'Entendendo a diretiva v-bind',
-              check: true
+               cor:'branco',
+               posicaoX: 0,
+               posicaoY: 0
             },
             methods: {
-                somar: function somar() { //convencionar usar o mesmo nome da função
-                    return this.n1 + this.n2;
+                mudarCor(c) {
+                   this.cor = c
                 },
-                subtrair: function subtrair() { //anônima
-                    return this.n1 - this.n2;
-                },
-                multiplicar: () => {
-                    return 4 * 2; //arrow function
-            },
-            dividir() {
-                return this.n1 / this.n2;
-            }        
-        }
+                coordenadas(e){
+                    this.posicaoX = e.clientX
+                    this.posicaoY = e.clientY                  
+                }
+            }
         })
-    </script>
+ </script>
 </body>
 </html>
