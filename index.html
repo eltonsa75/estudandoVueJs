@@ -41,14 +41,13 @@
 <body>
 
     <div id="app">
-    <div class="borda div-principal" :class="cor">
-        Cor: {{ cor }}
-        <br>
-        Posição X do Mouse: {{ posicaoX }}
-        <br>
-        Posição Y do Mouse: {{ posicaoY }}
-
-    </div>
+    <a href="https://jorgesantana.net.br" 
+            target="_blank" 
+            v-on:click="prevenirComportamentoPadrao()"
+    >
+    Link
+    </a>
+    Mensagem: {{ msg  }}
     <hr>
     <div @click="mudarCor('verde')" class="borda div-comum"></div>
     <div 
@@ -64,18 +63,12 @@
         const vm = new Vue({
             el: '#app',
             data: {
-               cor:'branco',
-               posicaoX: 0,
-               posicaoY: 0
+              msg: ''
             },
             methods: {
-                mudarCor(c) {
-                   this.cor = c
-                },
-                coordenadas(e){
-                    this.posicaoX = e.clientX
-                    this.posicaoY = e.clientY                  
-                }
+             prevenirComportamentoPadrao(){
+                 this.msg = 'Comportamento padrão ativado'
+             }
             }
         })
  </script>
