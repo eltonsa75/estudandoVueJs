@@ -8,68 +8,22 @@
     <title>Trabalhando com VueJs</title>
 
     <style>
-        .verde {
-            background-color: green;
-        }
-        .branco {
-            background-color: white;
-        }
-        .azul {
-            background-color: blue;
-        }
-        .vermelho {
-            background-color: red;
-        }
-
-        .borda{
-            border: 1px solid black;
-        }
-
-        .div-principal{
-            width: 200px;
-            height: 200px;
-        }
-        
-        .div-comum{
-            width: 50px;
-            height: 50px;
-            display: inline-block;
-        }
+     
 
     </style>
 </head>
 <body>
 
     <div id="app">
-    <a href="https://jorgesantana.net.br" 
-            target="_blank" 
-            v-on:click="prevenirComportamentoPadrao()"
-    >
-    Link
-    </a>
-    Mensagem: {{ msg  }}
-    <hr>
-    <div @click="mudarCor('verde')" class="borda div-comum"></div>
-    <div 
-        class="borda div-comum" 
-        @mouseover="mudarCor('azul')"
-        @mouseout="mudarCor('vermelho')">
-    </div>
-    <div class="borda div-comum" @mousemove="coordenadas($event)"></div>
+   
     </div>
 
     <script>    
 
         const vm = new Vue({
             el: '#app',
-            data: {
-              msg: ''
-            },
-            methods: {
-             prevenirComportamentoPadrao(){
-                 this.msg = 'Comportamento padrão ativado'
-             }
-            }
+            data: {},
+            methods: {}
         })
  </script>
 </body>
