@@ -64,7 +64,13 @@
                     txt += ', idade ' + this.pacientes[key].idade 
                     txt += ', plano ' + this.pacientes[key].plano
 
-                    return txt
+                    return txt.toUpperCase()
+                },
+                pacientesPlanoOuro() {
+                    let pacientes = this.pacientes.filter((p) => {
+                        return p.plano == 'Ouro'
+                    })
+                    return pacientes
                 }
             }
 
